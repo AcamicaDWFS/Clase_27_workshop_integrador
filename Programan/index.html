@@ -49,7 +49,7 @@
 <body>
     <header>
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav id="menu" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">Fixed navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,13 +58,10 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#menu">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="bill.html">Pagar</a>
                     </li>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
@@ -75,22 +72,9 @@
         </nav>
     </header>
 
-    <main role="main">
+    <main role="main" id="main">
 
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1>Album example</h1>
-                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                    entirely.</p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                </p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
+        <div class="album my-5 py-5 bg-light">
             <div class="container">
 
                 <div class="row">
@@ -303,11 +287,8 @@
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
-                <a href="#">Back to top</a>
+                <a href="#main">Back to top</a>
             </p>
-            <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-            <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a
-                    href="/docs/4.4/getting-started/introduction/">getting started guide</a>.</p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
