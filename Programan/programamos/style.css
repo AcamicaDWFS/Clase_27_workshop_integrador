@@ -1,0 +1,157 @@
+body{
+  column-gap: 5px;
+  display: grid;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  grid-template-rows: 150px 1fr 150px;
+  padding: 5px;
+  row-gap: 5px;
+}
+
+/*Header */
+header{
+  grid-column: 1 / 5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1{
+  font-size: 50px;
+}
+
+#logo{
+  display: flex;
+  align-items: center;
+  height: 110px;
+  width: 180px;
+}
+
+#carrito{
+  height: 40px;
+  width: 40px;
+}
+
+nav{
+  height: 80px;
+  width: 800px;
+}
+
+ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  text-align: center;
+}
+
+.nav1{
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+/*Main*/
+main{
+  background-color: rgb(154, 207, 223);
+  padding: 60px 30px 25px;
+  grid-column: 1 / 4;
+}
+
+.menuproductos{
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  font-size: 25px;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+/*Galería */
+.slider{
+  width: 50%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider ul{
+  display: flex;
+  padding: 0;
+  width: 400%;
+  animation: cambio 20s infinite alternate;
+}
+
+.slider li{
+  list-style: none;
+  width: 100%;
+}
+
+.slider img{
+  border-radius: 10%;
+  width: 100%;
+  height: 400px;
+}
+
+@keyframes cambio {
+  0% { margin-left: 0; }
+  20% { margin-left: 0; }
+  
+  25% { margin-left: -100%;}
+  45% {margin-left: -100%;}
+
+  50% { margin-left: -200%;}
+  70% {margin-left: -200%;}
+
+  75% { margin-left: -300%;}
+  100% {margin-left: -300%;}
+}
+
+/*Aside*/
+aside{
+  grid-column: 4 / span 1;
+  background-color:rgb(219, 219, 219);
+  text-align: center;
+}
+
+.seccionpromo{
+  background-color: white;
+  border: 5px solid rgb(214, 87, 112);
+  border-radius: 10%;
+  height: 35%;
+  margin: 10%;
+  width: 80%;
+}
+
+p{
+  margin: 10%;
+}
+#gratis{
+  font-weight: 700;
+  font-size: larger;
+}
+
+/*Footer */
+
+footer{
+  background-color: rgb(240, 214, 218);
+  grid-column: 1 / 5;
+}
+
+h3{
+  display: flex;
+  justify-content: space-around;
+}
+.social{
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  cursor: pointer;
+}
+i{
+  color: black;
+}
+i:hover{
+  color: rgb(7, 203, 251)
+}
