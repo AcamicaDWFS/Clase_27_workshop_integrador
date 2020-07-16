@@ -24,6 +24,7 @@
             alt=""
           />
         </div>
+
         <ul class="lista-nav">
           <li class="search-bar">
             <div class="searchbar">
@@ -40,14 +41,26 @@
               <img
                 src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_208967.png&f=1&nofb=1"
                 alt="_blank"
-            /></a>
+              />
+
+              <span id="number">0</span>
+            </a>
           </li>
         </ul>
       </nav>
+
+      <section id="cart-box">
+        <h3>Tu carrito</h3>
+
+        <span class="close"></span>
+
+        <h3 id="total">Total: <span>$0</span></h3>
+        <button id="pay-btn">Proceder al pago</button>
+      </section>
     </header>
 
     <main>
-      <h2>Cómputo</h2>
+      <h2>Lo más vendido</h2>
 
       <section class="grid">
         <div class="card">
@@ -183,5 +196,7 @@
         </div>
       </section>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>

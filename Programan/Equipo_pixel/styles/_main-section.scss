@@ -14,41 +14,14 @@ main {
   grid-template-columns: repeat(3, 1fr);
   line-height: 35px;
 
-  div {
+  .card {
     text-align: center;
-    margin: 25px 50px;
+    margin: 25px 8%;
     border-radius: 25px;
-    box-shadow: 0px 4px 18px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: $shadow;
   }
 
   img {
     margin-top: 25px;
-  }
-
-  button {
-    background: #3d94f6;
-    background-image: linear-gradient(to bottom, #3d94f6, #1e62d0);
-    border-radius: 20px;
-    color: #ffffff;
-    font-family: $body-font;
-    font-size: 18px;
-    font-weight: 300;
-    margin: 20px 0;
-    padding: 10px 20px;
-    box-shadow: 0px 0px 4px 0px #000000;
-    text-decoration: none;
-    text-shadow: 1px 1px 20px #000000;
-    text-align: center;
-    border: solid #337fed 1px;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-  button:hover {
-    border: solid #337fed 1px;
-    background: #1e62d0;
-    background-image: linear-gradient(to bottom, #1e62d0, #3d94f6);
-    border-radius: 20px;
-    text-decoration: none;
   }
 }
