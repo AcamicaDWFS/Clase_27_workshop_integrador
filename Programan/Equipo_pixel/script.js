@@ -8,13 +8,9 @@ class Product {
   }
 }
 
-function formatNumber(number) {
-  return number.toLocaleString("en");
-}
+const formatNum = (num) => num.toLocaleString("en");
 
-function getPrice(price) {
-  return parseFloat(price.split(",").join(""));
-}
+const getPrice = (price) => parseFloat(price.split(",").join(""));
 
 function getTotal(cart) {
   const prices = cart.map((product) => product.price);
@@ -35,6 +31,13 @@ function createProduct(evt) {
   return currItem;
 }
 
+function createTextElement(type, text) {
+  const newElement = document.createElement(type);
+  newElement.innerText = text;
+
+  return newElement;
+}
+
 function createCartItem(product) {
   const item = document.createElement("article");
   item.classList.add("item");
@@ -46,37 +49,35 @@ function createCartItem(product) {
   const container = document.createElement("div");
   container.classList.add("description");
 
-  const productName = document.createElement("h4");
-  productName.innerText = product.product;
+  const productName = createTextElement("h4", product.product);
+  const brand = createTextElement("p", `Marca: ${product.brand}`);
+  const model = createTextElement("p", `Modelo: ${product.model}`);
+  const price = createTextElement("p", `Precio: $${formatNum(product.price)}`);
 
-  const brand = document.createElement("p");
-  brand.innerText = `Marca: ${product.brand}`;
-
-  const model = document.createElement("p");
-  model.innerText = `Modelo: ${product.model}`;
-
-  const price = document.createElement("p");
-  price.innerText = `Precio: $${formatNumber(product.price)}`;
   container.append(productName, brand, model, price);
 
-  item.append(img, container);
+  const deleteBtn = document.createElement("i");
+  deleteBtn.classList.add("fas");
+  deleteBtn.classList.add("fa-trash-alt");
+
+  item.append(img, container, deleteBtn);
 
   return item;
 }
 
-function createCard(product) {
-  const card = document.createElement("div");
-  card.classList.add("card");
+function hideCart() {
+  cartBox.style.display = "none";
+  document.body.style.overflowY = "visible";
+}
 
-  const image = document.createElement("img");
-  image.src = product.imgSrc;
-
-  const productName = document.createElement("h3");
-  productName.innerText = product.product;
+function showCart() {
+  cartBox.style.display = "block";
+  document.body.style.overflowY = "hidden";
 }
 
 const buttons = document.querySelectorAll(".card button");
 const payBtn = document.querySelector("#pay-btn");
+
 const total = document.querySelector("#total span");
 const cartButton = document.querySelector(".carrito");
 const cartBox = document.querySelector("#cart-box");
@@ -86,26 +87,50 @@ const cart = [];
 
 for (let button of buttons) {
   button.addEventListener("click", (evt) => {
-    const item = createProduct(evt);
-    cart.push(item);
+    const product = createProduct(evt);
+    cart.push(product);
 
-    cartBox.insertBefore(createCartItem(item), payBtn);
+    const htmlProduct = createCartItem(product);
+
+    cartBox.insertBefore(htmlProduct, payBtn);
     notification.innerText = cart.length;
 
-    total.innerText = `$${formatNumber(getTotal(cart))}`;
+    const rmButton = htmlProduct.querySelector("i");
+    addDeleteListener(rmButton, product);
+
+    total.innerText = `$${formatNum(getTotal(cart))}`;
   });
 }
 
+function addDeleteListener(button, product) {
+  button.addEventListener("click", (evt) => {
+    const productToRemove = evt.target.parentElement;
+    const modelToDelete = product.model;
+
+    deleteElement(cart, modelToDelete);
+    productToRemove.remove();
+
+    notification.innerText = cart.length;
+
+    cart.length === 0
+      ? hideCart()
+      : (total.innerText = `$${formatNum(getTotal(cart))}`);
+  });
+}
+
+function deleteElement(cart, modelToDelete) {
+  const models = cart.map((product) => product.model);
+  const pos = models.indexOf(modelToDelete);
+
+  cart.splice(pos, 1);
+}
+
 cartButton.addEventListener("click", () => {
-  if (cart.length != 0) {
-    cartBox.style.display = "block";
-    document.body.style.overflowY = "hidden";
-  } else {
-    alert("Aún no hay productos en el carrito.");
-  }
+  cart.length !== 0
+    ? showCart()
+    : alert("Aún no hay productos en el carrito.");
 });
 
 closeButton.addEventListener("click", () => {
-  cartBox.style.display = "none";
-  document.body.style.overflowY = "visible";
+  hideCart();
 });
