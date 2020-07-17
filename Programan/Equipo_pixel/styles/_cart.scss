@@ -1,13 +1,14 @@
 #cart-box {
   background-color: white;
+  line-height: 25px;
   border-radius: 25px;
   box-shadow: $shadow;
   position: fixed;
   display: none;
-  padding: 15px;
+  padding: 15px 75px 15px 15px;
   top: 100px;
   right: 30px;
-  max-height: 600px;
+  max-height: 70vh;
   overflow-y: auto;
 
   h3 {
@@ -44,6 +45,21 @@
   button {
     display: block;
     margin: 0 auto;
+  }
+
+  i {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    display: block;
+    font-size: 25px;
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+
+  i:hover {
+    color: #1b6ca8;
+    transition: color 0.5s;
   }
 }
 
