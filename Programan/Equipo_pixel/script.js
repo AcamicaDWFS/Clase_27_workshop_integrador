@@ -16,8 +16,13 @@ function getPrice(price) {
   return parseFloat(price.split(",").join(""));
 }
 
-function addToCart(evt) {
-  const selectedCard = evt.path[0].parentElement;
+function getTotal(cart) {
+  const prices = cart.map((product) => product.price);
+  return prices.reduce((acc, curr) => acc + curr);
+}
+
+function createProduct(evt) {
+  const selectedCard = evt.target.parentElement;
 
   const product = selectedCard.querySelector("h3").innerText;
   const brand = selectedCard.querySelector(".brand").innerText;
@@ -27,7 +32,6 @@ function addToCart(evt) {
 
   const currItem = new Product(product, brand, model, price, imgSrc);
 
-  cart.push(currItem);
   return currItem;
 }
 
@@ -44,28 +48,31 @@ function createCartItem(product) {
 
   const productName = document.createElement("h4");
   productName.innerText = product.product;
-  container.append(productName);
 
   const brand = document.createElement("p");
   brand.innerText = `Marca: ${product.brand}`;
-  container.append(brand);
 
   const model = document.createElement("p");
   model.innerText = `Modelo: ${product.model}`;
-  container.append(model);
 
   const price = document.createElement("p");
   price.innerText = `Precio: $${formatNumber(product.price)}`;
-  container.append(price);
+  container.append(productName, brand, model, price);
 
   item.append(img, container);
 
   return item;
 }
 
-function getTotal(cart) {
-  const prices = cart.map((product) => product.price);
-  return prices.reduce((acc, curr) => acc + curr);
+function createCard(product) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const image = document.createElement("img");
+  image.src = product.imgSrc;
+
+  const productName = document.createElement("h3");
+  productName.innerText = product.product;
 }
 
 const buttons = document.querySelectorAll(".card button");
@@ -79,7 +86,8 @@ const cart = [];
 
 for (let button of buttons) {
   button.addEventListener("click", (evt) => {
-    const item = addToCart(evt);
+    const item = createProduct(evt);
+    cart.push(item);
 
     cartBox.insertBefore(createCartItem(item), payBtn);
     notification.innerText = cart.length;
