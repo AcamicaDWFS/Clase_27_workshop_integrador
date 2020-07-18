@@ -13,7 +13,7 @@ class Product {
 
     const img = document.createElement("img");
     img.src = this.imgSrc;
-    img.setAttribute("alt", "Cart item.");
+    img.setAttribute("alt", "Cart item");
 
     const container = document.createElement("div");
     container.classList.add("description");
@@ -74,6 +74,29 @@ function showCart() {
   document.body.style.overflowY = "hidden";
 }
 
+function checkLocalStorage() {
+  if (localStorage.getItem("cart") === null) {
+    localStorage.setItem("cart", "[]");
+  }
+
+  if (localStorage.getItem("cart") !== "[]") {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cart.forEach((item) => (item.__proto__ = Product.prototype));
+
+    notification.innerText = cart.length;
+    total.innerText = `$${formatNum(getTotal(cart))}`;
+
+    for (let item of cart) {
+      item.createCartItem();
+
+      cartContainer.append(item.htmlCartItem);
+
+      const rmButton = item.htmlCartItem.querySelector("i");
+      addDeleteListener(rmButton);
+    }
+  }
+}
+
 const buttons = document.querySelectorAll(".card button");
 
 const total = document.querySelector("#total span");
@@ -82,22 +105,24 @@ const cartBox = document.querySelector("#cart-box");
 const cartContainer = document.querySelector("#cart-container");
 const closeButton = document.querySelector(".close");
 const notification = document.querySelector("#number");
-const cart = [];
+let cart = [];
 
 for (let button of buttons) {
   button.addEventListener("click", (evt) => {
     const product = createProduct(evt);
+
     cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     product.createCartItem();
 
     cartContainer.append(product.htmlCartItem);
     notification.innerText = cart.length;
 
+    total.innerText = `$${formatNum(getTotal(cart))}`;
+
     const rmButton = product.htmlCartItem.querySelector("i");
     addDeleteListener(rmButton);
-
-    total.innerText = `$${formatNum(getTotal(cart))}`;
   });
 }
 
@@ -107,8 +132,9 @@ function addDeleteListener(button) {
     const nodes = Array.prototype.slice.call(cartContainer.children);
     const pos = nodes.indexOf(productToRemove);
 
-    cart.splice(pos, 1);
     productToRemove.remove();
+    cart.splice(pos, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
     notification.innerText = cart.length;
 
@@ -127,3 +153,7 @@ cartBtn.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
   hideCart();
 });
+
+// Check if values are stored in browser's local storage if so it updates the
+// cart.
+checkLocalStorage();
