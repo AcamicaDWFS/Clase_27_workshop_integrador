@@ -54,7 +54,6 @@ function insertCard(item, index){
 }
 
 function insertItemCar(item){
-    console.log(item)
     const CAR_CONT = document.getElementById('cart');
     let prod = document.createElement('li');
     prod.className = 'list-group-item d-flex justify-content-between lh-condensed';
