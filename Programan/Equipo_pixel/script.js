@@ -6,6 +6,32 @@ class Product {
     this.price = price;
     this.imgSrc = imgSrc;
   }
+
+  createCartItem() {
+    const item = document.createElement("article");
+    item.classList.add("item");
+
+    const img = document.createElement("img");
+    img.src = this.imgSrc;
+    img.setAttribute("alt", "Cart item.");
+
+    const container = document.createElement("div");
+    container.classList.add("description");
+
+    const productName = createTextElement("h4", this.product);
+    const brand = createTextElement("p", `Marca: ${this.brand}`);
+    const model = createTextElement("p", `Modelo: ${this.model}`);
+    const price = createTextElement("p", `Precio: $${formatNum(this.price)}`);
+
+    container.append(productName, brand, model, price);
+
+    const deleteBtn = document.createElement("i");
+    deleteBtn.classList.add("fas", "fa-trash-alt");
+
+    item.append(img, container, deleteBtn);
+
+    this.htmlCartItem = item;
+  }
 }
 
 const formatNum = (num) => num.toLocaleString("en");
@@ -38,33 +64,6 @@ function createTextElement(type, text) {
   return newElement;
 }
 
-function createCartItem(product) {
-  const item = document.createElement("article");
-  item.classList.add("item");
-
-  const img = document.createElement("img");
-  img.src = product.imgSrc;
-  img.setAttribute("alt", "Cart item");
-
-  const container = document.createElement("div");
-  container.classList.add("description");
-
-  const productName = createTextElement("h4", product.product);
-  const brand = createTextElement("p", `Marca: ${product.brand}`);
-  const model = createTextElement("p", `Modelo: ${product.model}`);
-  const price = createTextElement("p", `Precio: $${formatNum(product.price)}`);
-
-  container.append(productName, brand, model, price);
-
-  const deleteBtn = document.createElement("i");
-  deleteBtn.classList.add("fas");
-  deleteBtn.classList.add("fa-trash-alt");
-
-  item.append(img, container, deleteBtn);
-
-  return item;
-}
-
 function hideCart() {
   cartBox.style.display = "none";
   document.body.style.overflowY = "visible";
@@ -76,11 +75,11 @@ function showCart() {
 }
 
 const buttons = document.querySelectorAll(".card button");
-const payBtn = document.querySelector("#pay-btn");
 
 const total = document.querySelector("#total span");
-const cartButton = document.querySelector(".carrito");
+const cartBtn = document.querySelector(".carrito");
 const cartBox = document.querySelector("#cart-box");
+const cartContainer = document.querySelector("#cart-container");
 const closeButton = document.querySelector(".close");
 const notification = document.querySelector("#number");
 const cart = [];
@@ -90,24 +89,25 @@ for (let button of buttons) {
     const product = createProduct(evt);
     cart.push(product);
 
-    const htmlProduct = createCartItem(product);
+    product.createCartItem();
 
-    cartBox.insertBefore(htmlProduct, payBtn);
+    cartContainer.append(product.htmlCartItem);
     notification.innerText = cart.length;
 
-    const rmButton = htmlProduct.querySelector("i");
-    addDeleteListener(rmButton, product);
+    const rmButton = product.htmlCartItem.querySelector("i");
+    addDeleteListener(rmButton);
 
     total.innerText = `$${formatNum(getTotal(cart))}`;
   });
 }
 
-function addDeleteListener(button, product) {
+function addDeleteListener(button) {
   button.addEventListener("click", (evt) => {
     const productToRemove = evt.target.parentElement;
-    const modelToDelete = product.model;
+    const nodes = Array.prototype.slice.call(cartContainer.children);
+    const pos = nodes.indexOf(productToRemove);
 
-    deleteElement(cart, modelToDelete);
+    cart.splice(pos, 1);
     productToRemove.remove();
 
     notification.innerText = cart.length;
@@ -118,14 +118,7 @@ function addDeleteListener(button, product) {
   });
 }
 
-function deleteElement(cart, modelToDelete) {
-  const models = cart.map((product) => product.model);
-  const pos = models.indexOf(modelToDelete);
-
-  cart.splice(pos, 1);
-}
-
-cartButton.addEventListener("click", () => {
+cartBtn.addEventListener("click", () => {
   cart.length !== 0
     ? showCart()
     : alert("Aún no hay productos en el carrito.");
