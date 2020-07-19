@@ -66,6 +66,15 @@ function insertItemCar(item){
     CAR_CONT.append(prod);
 }
 
+function deletItemCar(){
+    const CAR_CONT = document.getElementById('cart');
+    let childs = CAR_CONT.childNodes;
+    let tam = childs.length-1; 
+    for(let i = 0; i < tam; i++){
+        CAR_CONT.removeChild(childs[0]);
+    }
+}
+
 function insertTotal(car){
     const CAR_CONT = document.getElementById('cart');
     let total_price = 0;
@@ -76,6 +85,16 @@ function insertTotal(car){
     total.className = 'list-group-item d-flex justify-content-between';
     total.innerHTML = `<span>Total (MXN)</span>
                         <strong>$${total_price}</strong>`;
+    CAR_CONT.append(total);
+}
+
+function deleteTotal(){
+    const CAR_CONT = document.getElementById('cart');
+    CAR_CONT.removeChild(CAR_CONT.lastChild);
+    let total = document.createElement('li');
+    total.className = 'list-group-item d-flex justify-content-between';
+    total.innerHTML = `<span>Total (MXN)</span>
+                        <strong>$0</strong>`;
     CAR_CONT.append(total);
 }
 

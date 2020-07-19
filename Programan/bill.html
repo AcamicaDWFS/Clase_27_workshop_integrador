@@ -37,13 +37,12 @@
         <div class="container" id="bill">
             <div class="py-5 text-center">
                 <a class="btn btn-sm btn-outline-secondary" href="./index.html"> Regresar </a>
-                <!-- <img class="d-block mx-auto mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72"
-                    height="72"> -->
                 <h2>Formulario de Pago</h2>
                 <p class="lead">Llena los Campos para realizar el pago</p>
             </div>
 
             <div class="row">
+                <!-- Carrito -->
                 <div class="col-md-4 order-md-2 mb-4">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span class="text-muted">Carrito</span>
@@ -52,9 +51,10 @@
                     <ul class="list-group mb-3" id="cart">
                     </ul>
                 </div>
+                <!-- Form Pago -->
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Datos y Dirección del usuario</h4>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" id="payForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Nombre</label>
@@ -196,7 +196,7 @@
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar con la compra</button>
+                        <button class="btn btn-primary btn-lg btn-block" id="sendForm">Continuar con la compra</button>
                     </form>
                 </div>
             </div>
