@@ -10,43 +10,62 @@
 <body>
     <header>
         <img id="logo" src="img/logo.jpg" alt="logo">
-        <h1>Perritos Co.</h1>
-            <nav>
-                <ul>
-                    <a href="#">
-                        <li class="nav1">Iniciar sesión / Registrarse</li>
-                    </a>
-                    <a href="#">
-                        <li class="nav1">Ayuda</li>
-                    </a>
-                    <a href="#">
-                    <li class="nav1"><img id="carrito" src="img/cochecompras.png" alt="carrito"></li>
-                    </a>
+        <h1 id="title">Perritos Co.</h1>
+        <nav class="nav1">
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle"/>
+                <ul class="menu">
+                    <a href="#">Iniciar sesión / Registrarse</a>
+                    <a href="#">Ayuda</a>
+                    <a href="#"><i class="fas fa-shopping-bag"></i></a>
                 </ul>
-            </nav>
     </header>
     <main>
-        <nav class="navproductos">
-            <ul class="menuproductos">
-                <a href="#">
-                <li class="productos">Perros</li>
-                </a>
-                <a href="#">
-                    <li class="productos">Gatos</li>
-                </a>
-                <a href="#">
-                <li class="productos">Aves</li>
-                </a>
-            </ul>
-        </nav>
-        <div class="slider">
-            <ul>
-                <li class="slide"><img src="img/perrito1.webp" alt="perrito1"></li>
-                <li class="slide"><img src="img/gatito1.jpg" alt="gatito1"></li>
-                <li class="slide"><img src="img/pajarito1.jfif" alt="pajarito1"></li>
-                <li class="slide"><img src="img/perrito2.jfif" alt="perrito2"></li>
-            </ul>
+        <div id="categories">
+            <input type="checkbox" name="filtro">
+            <label class="products" id="all" for="all">Todos</label>
+
+            <input type="checkbox" name="filtro">
+            <label class="products" id="navdogs" for="dogs">Perros</label>
+
+            <input type="checkbox" name="filtro">
+            <label class="products" id="navcats" for="cats">Gatos</label>
+
+            <input type="checkbox" name="filtro" >
+            <label class="products" id="navbirds" for="birds">Aves</label>
         </div>
+
+        <div class="card-container" id="container-dog">
+            <div class="dog"><img src="img/perrito1.webp" alt="perrito1">
+            <p>Nombre: Copito<br> Edad: 2 meses <br> Costo: $3,000 MXN</p></div>
+            <div class="dog"><img src="img/perrito5.jpg" alt="perrito2">
+            <p>Nombre: Peluso <br> Edad: 4 meses <br> Costo: $4,000 MXN</p></div>
+            <div class="dog"><img src="img/perrito3.jpg" alt="perrito3">
+            <p>Nombre: Pepe<br> Edad: 5 meses <br> Costo: $2,000 MXN</p></div>
+            <div class="dog"><img src="img/perrito4.jpg" alt="perrito4">
+            <p>Nombre: Chuby<br> Edad: 2 meses <br> Costo: $3,000 MXN</p></div>
+        </div>
+        <div class="card-container" id="container-cat">
+            <div class="cat"><img class="cat" src="img/gatito.JPG" alt="gatito1">
+            <p>Nombre: Nyu<br> Edad: 10 años <br> Costo: $10,000 MXN</p></div>
+            <div class="cat"><img class="cat" src="img/gatito1.jpg" alt="gatito2">
+            <p>Nombre: Simba<br> Edad: 2 meses <br> Costo: $2,000 MXN</p></div>
+            <div class="cat"><img class="cat" src="img/gatito3.jpg" alt="gatito3">
+            <p>Nombre: Luna<br> Edad: 4 meses <br> Costo: $3,000 MXN</p></div>
+            <div class="cat"><img class="cat" src="img/gatito4.jfif" alt="gatito4">
+            <p>Nombre: Pusheen<br> Edad: 4 meses <br> Costo: $2,500 MXN</p></div>
+        </div>
+        <div class="card-container" id="container-bird">
+            <div class="bird"><img src="img/pajarito1.jfif" alt="perrito1">
+            <p>Nombre: Yu-Lin<br> Edad: 1 año <br> Costo: $1,000 MXN</p></div>
+            <div class="bird"><img src="img/pajarito2.jfif" alt="perrito2">
+            <p>Nombre: Bort<br> Edad: 11 meses <br> Costo: $3,000 MXN</p></div>
+            <div class="bird"><img src="img/pajarito3.jpg" alt="perrito3">
+            <p>Nombre: Akai<br> Edad: 2 años <br> Costo: $2,000 MXN</p></div>
+            <div class="bird"><img src="img/pajarito4.jfif" alt="perrito4">
+            <p>Nombre: Pepe<br> Edad: 1 año <br> Costo: $1,500 MXN</p></div>
+        </div>
+
     </main>
     <aside>
         <h2>Promociones</h2>
