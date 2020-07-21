@@ -130,7 +130,9 @@ function inCar() {
 }
 
 function pay(){
-    window.location.href = 'bill.html';
+    if (car.length > 0) {
+        window.location.href = 'bill.html';
+    } 
 }
 
 function setShoppingCart() {
