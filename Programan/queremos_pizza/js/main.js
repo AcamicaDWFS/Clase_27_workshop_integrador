@@ -1,4 +1,4 @@
 (()=>{
-    localStorage.clear();
+    inCar();
     PRODUCTS.forEach(insertCard);
 })();
