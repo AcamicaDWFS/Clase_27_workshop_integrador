@@ -21,6 +21,7 @@ function addProducts(item, callback){
     try{
         localStorage.setItem('productsList', JSON.stringify(item));
         callback("Producto Almacenado en el Carrito");
+        inCar();
     } catch (e) {
         console.error(e);        
     }
@@ -103,9 +104,7 @@ function addToCar(id, index){
     if(PRODUCTS[index].existence > 0){
         car.push(prod);
         PRODUCTS[index].existence -= 1;
-        totalCar.innerText = car.length;
-        console.table(car);
-        alert('Producto agregado al carrito');
+        addProducts(car, succesSaveStorage);
     } else {
         alert('Prodcunto no disponible por el momento');
     }
@@ -124,7 +123,56 @@ function totalProd(prod){
     return totals;
 }
 
-function pay(){
-    addProducts(car, succesSaveStorage);
-    window.location.href = 'bill.html';
+function inCar() {
+    let onLocalS = JSON.parse(localStorage.getItem('productsList'));
+    car = onLocalS ? onLocalS : [];
+    totalCar.innerText = car.length;
 }
+
+function pay(){
+    if (car.length > 0) {
+        window.location.href = 'bill.html';
+    } 
+}
+
+function setShoppingCart() {
+    let cart = getProducts();
+    let total = totalProd(cart);
+    const TOTAL_PROD = document.getElementById('total_prod');
+    
+    if(total && Object.keys(total).length > 0){
+        TOTAL_PROD.innerText = cart.length;
+        for(let prod in total){
+            insertItemCar(total[prod]);
+        }    
+    }
+    insertTotal(cart)
+}
+
+function setUserData() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const colonia = document.getElementById('address2').value;
+    const country = document.getElementById('country').value;
+    const state = document.getElementById('state').value;
+    const zip = document.getElementById('zip').value;
+    let date = new Date();
+    let fullDate = date.getDate() + '-' + ( date.getMonth() + 1 ) + '-' + date.getFullYear();
+    let hours = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+
+    const userInfo = {
+        firstName,
+        lastName,
+        email,
+        address,
+        colonia,
+        country,
+        state,
+        zip,
+        fullDate,
+        hours
+    }
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+} 

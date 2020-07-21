@@ -21,6 +21,6 @@ let search = function(){
    result.forEach(insertCard);
 }
 
-localStorage.clear();
+inCar();
 search();
 
