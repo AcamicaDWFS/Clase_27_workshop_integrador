@@ -22,7 +22,7 @@ function addProducts(item, callback){
         localStorage.setItem('productsList', JSON.stringify(item));
         callback("Producto Almacenado en el Carrito");
     } catch (e) {
-        console.error(e);
+        console.error(e);        
     }
 }
 
@@ -104,6 +104,7 @@ function addToCar(id, index){
         car.push(prod);
         PRODUCTS[index].existence -= 1;
         totalCar.innerText = car.length;
+        console.table(car);
         alert('Producto agregado al carrito');
     } else {
         alert('Prodcunto no disponible por el momento');
