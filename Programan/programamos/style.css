@@ -7,7 +7,7 @@ body{
   padding: 5px;
   row-gap: 5px;
 }
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   body{
     column-gap: 0;
   }
@@ -71,7 +71,7 @@ label{
   display: none;
 }
 
-@media only screen and (max-width: 836px){
+@media only screen and (max-width: 830px){
   nav label{
     display: block;
     cursor: pointer;
@@ -98,7 +98,7 @@ label{
   }
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   h1{
     font-size: 1.3em;
   }
@@ -130,13 +130,12 @@ input[type="checkbox"]{
   background-color: aliceblue;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
 }
 
 #categories label{
   cursor: pointer;
   display: flex;
-  flex-direction: row;
+  margin: 0 40px 0 40px;
   width: 100%;
 }
 
@@ -144,19 +143,22 @@ input[type="checkbox"]{
   color: crimson;
 }
 
-@media only screen and (max-width: 836px){
+@media only screen and (max-width: 830px){
   #categories label{
     font-size: 1em;
     justify-content: center;
+    width: 0;
   }
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   #categories label{
     font-size: 0.9em;
     height: 50px; 
     align-items: center;
     border-bottom: 1px solid gray;
+    margin: 0;
+    width: 100%;
   }
   #categories{
     display: flex;
@@ -183,14 +185,31 @@ input[type="checkbox"]{
   border-radius: 10%;
   height: 70%;
   width: 80%;
+  margin-bottom: 0;
+}
+
+.buttonbuy{
+  background-color: crimson;
+  border-radius: 5%;
+  color: white;
+  font-weight: 600;
+  margin-left: 0 15% 0 15%;
+  text-decoration: none;
+  padding: 2%;
+}
+
+.buttonbuy:hover{
+  background-color: white;
+  color: crimson;
 }
 
 .dog p, .cat p, .bird p{
   font-size: 17px;
   font-weight: 600;
+  margin: 5% 10%;
 }
 
-@media only screen and (max-width: 836px){
+@media only screen and (max-width: 830px){
   .card-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -199,14 +218,23 @@ input[type="checkbox"]{
     row-gap: 10px;
     column-gap: 10px;
   }
+
+  .buttonbuy{
+    font-weight: 500;
+    font-size: 90%;
+    margin: 0 7% 0 10%;
+    text-decoration: none;
+    padding: 2%;
+  }
   
   .dog p, .cat p, .bird p{
     font-size: 0.7em;
     font-weight: 500;
+    margin: 5% 0 40% 10%;
   }
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   .card-container{
     display: grid;
     grid-template-columns: 1fr;
@@ -244,14 +272,14 @@ p{
   margin: 10%;
 }
 
-@media only screen and (max-width: 836px){
+@media only screen and (max-width: 830px){
   h2{
     font-size: 1em;
     font-weight: 600;
   }
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   aside{
     grid-column: 1 / span 5;
   }
@@ -288,7 +316,7 @@ i:hover{
   color: crimson;
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 600px){
   h3{
     font-size: 15px;
   }

@@ -49,3 +49,14 @@ document.getElementById("title").onmouseover = function(){
         containercat.style.display = "grid";
         containerbird.style.display = "grid";
     })
+
+    //Carrito de compras
+    let car = [];
+    let buttonbuy = document.getElementById("buttonbuy");
+    let shoppingcar = document.getElementById("shoppingcar");
+    shoppingcar.addEventListener('click', function (){
+        containerdog.style.display = "none";
+        containercat.style.display = "none";
+        containerbird.style.display = "none";
+    })
+
