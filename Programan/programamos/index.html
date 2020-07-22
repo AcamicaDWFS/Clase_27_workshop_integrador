@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/622b7b372b.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="img/logo.jpg" alt="logo">
+        <h1 id="title">Perritos Co.</h1>
+        <nav class="nav1">
+            <label for="toggle">&#9776;</label>
+            <input type="checkbox" id="toggle"/>
+                <ul class="menu">
+                    <a href="#">Iniciar sesión / Registrarse</a>
+                    <a href="#">Ayuda</a>
+                    <a href="#"><i class="fas fa-shopping-bag" id="shoppingcar"></i></a>
+                </ul>
+    </header>
+    <main>
+        <div id="categories">
+            <input type="checkbox" name="filtro">
+            <label class="products" id="all" for="all">Todos</label>
+
+            <input type="checkbox" name="filtro">
+            <label class="products" id="navdogs" for="dogs">Perros</label>
+
+            <input type="checkbox" name="filtro">
+            <label class="products" id="navcats" for="cats">Gatos</label>
+
+            <input type="checkbox" name="filtro" >
+            <label class="products" id="navbirds" for="birds">Aves</label>
+        </div>
+
+        <div class="card-container" id="container-dog">
+            <div class="dog"><img src="img/perrito1.webp" alt="perrito1"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Copito<br> Edad: 2 meses <br> Costo: $3,000 MXN</p>
+            </div>
+            <div class="dog"><img src="img/perrito5.jpg" alt="perrito2"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Peluso <br> Edad: 4 meses <br> Costo: $4,000 MXN</p>
+            </div>
+            <div class="dog"><img src="img/perrito3.jpg" alt="perrito3"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Pepe<br> Edad: 5 meses <br> Costo: $2,000 MXN</p>
+            </div>
+            <div class="dog"><img src="img/perrito4.jpg" alt="perrito4">
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Chuby<br> Edad: 2 meses <br> Costo: $3,000 MXN</p>
+            </div>
+        </div>
+        <div class="card-container" id="container-cat">
+            <div class="cat"><img class="cat" src="img/gatito.JPG" alt="gatito1"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Nyu<br> Edad: 10 años <br> Costo: $10,000 MXN</p>
+            </div>
+            <div class="cat"><img class="cat" src="img/gatito1.jpg" alt="gatito2"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Simba<br> Edad: 2 meses <br> Costo: $2,000 MXN</p>
+            </div>
+            <div class="cat"><img class="cat" src="img/gatito3.jpg" alt="gatito3"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Luna<br> Edad: 4 meses <br> Costo: $3,000 MXN</p>
+            </div>
+            <div class="cat"><img class="cat" src="img/gatito4.jfif" alt="gatito4"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Pusheen<br> Edad: 4 meses <br> Costo: $2,500 MXN</p>
+            </div>
+        </div>
+        <div class="card-container" id="container-bird">
+            <div class="bird"><img src="img/pajarito1.jfif" alt="perrito1"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Yu-Lin<br> Edad: 1 año <br> Costo: $1,000 MXN</p>
+            </div>
+            <div class="bird"><img src="img/pajarito2.jfif" alt="perrito2"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Bort<br> Edad: 11 meses <br> Costo: $3,000 MXN</p>
+            </div>
+            <div class="bird"><img src="img/pajarito3.jpg" alt="perrito3"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Akai<br> Edad: 2 años <br> Costo: $2,000 MXN</p>
+            </div>
+            <div class="bird"><img src="img/pajarito4.jfif" alt="perrito4"><br>
+                <a href="#" class="buttonbuy">Agrégame a tu canasta</a>
+                <p>Nombre: Pepe<br> Edad: 1 año <br> Costo: $1,500 MXN</p>
+            </div>
+        </div>
+
+    </main>
+    <aside>
+        <h2>Promociones</h2>
+        <section class="seccionpromo">
+            <h3>20% de descuento en todas las aves</h3>
+            <p>¡Llevate a tu ave favorita con un 20% de descuento y un paquete de alimento <span id="gratis">GRATIS!</span></p>
+        </section>
+        <section class="seccionpromo">
+            <h3>¡Programa de referenciados!</h3>
+            <p>Por cada referenciado, obten un monedero electrónico para diferentes tiendas afiliadas.</p> 
+        </section>
+    </aside>
+    <footer>
+        <h3>© 2020— Perritos Co.</h3>
+        <h3>Aviso de Privacidad</h3>
+        <div class="social">
+            <a href="http://www.instagram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="http://www.twitter.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="http://www.telegram.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+        </div>
+    </footer>
+<script src="main.js"></script>
+</body>
+</html>
